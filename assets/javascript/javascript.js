@@ -13,8 +13,7 @@ $(document).ready(function () {
 
     //A for loop which takes each item from the array and makes it into a button.
     for (var i = 0; i < cartoonList.length; i++) {
-        var cartoon = $('<button type="button" class="btn btn-success p-2 m-1">').text
-            (cartoonList[i]);
+        var cartoon = $('<button type="button" class="btn btn-success p-2 mr-1 ml-1">').text(cartoonList[i]);
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
         button = $(".btn");
@@ -36,13 +35,21 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
-            var gifDiv = $("<img>")
-            gifDiv.attr("src", response.data[0].bitly_gif_url);
-            var newDiv = $("<div>").text(response.data[0].title);
-            mainText.append(newDiv);
-            mainText.append(gifDiv);
+
+            for (var i = 1; i <= 10; i++) {
+                console.log(response);
+                var gifDiv = $("<img>")
+                gifDiv.attr("src", response.data[i].images.fixed_width_still.url);
+                var newDiv = $("<div>").text((response.data[i].title).toUpperCase());
+                mainText.append(newDiv);
+                mainText.append(gifDiv);
+            }
         });
     });
+
+    var gifDiv = $("<img>")
+    gifDiv.attr("src", "https://giphy.com/embed/39Zs6k1mvNkZ2");
+    mainText.append(gifDiv);
+
 
 });
