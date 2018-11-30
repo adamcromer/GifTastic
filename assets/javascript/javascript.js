@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //An array with a list of cartoons to show gifs for.
-    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill",];
+    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill", "Garfield"];
     cartoonList.sort();
 
 
@@ -15,7 +15,7 @@ $(document).ready(function () {
     for (i = 0; i < cartoonList.length; i++) {
         var cartoon = $('<button type="button" class="btn btn-success p-2 m-1">').text
             (cartoonList[i]);
-        cartoon.attr('id', cartoonList[i]);
+        cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
         clickFunction();
     }
@@ -25,9 +25,13 @@ $(document).ready(function () {
 
     function clickFunction() {
         button = $(".btn");
+        var gif = $(".gif");
         button.click(function () {
-            console.log(this.id);
-            var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + this.id +"&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
+            mainText.empty();
+            var thisCartoon = $(this).attr("data-name");
+            var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
+            console.log(thisCartoon);
+
             console.log(queryURL);
 
             $.ajax({
@@ -35,7 +39,11 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-                console.log(response.data[0].embed_url);
+                var gifDiv = $("<img>")
+                gifDiv.attr("src", response.data[0].bitly_gif_url);
+                var newDiv = $("<div>").text(response.data[0].title);
+                mainText.append(newDiv);
+                mainText.append(gifDiv);
             });
         });
     }
