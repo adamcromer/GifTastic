@@ -18,7 +18,6 @@ $(document).ready(function () {
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
         button = $(".btn");
-
     }
 
 
@@ -39,16 +38,21 @@ $(document).ready(function () {
 
             for (var i = 0; i < 10; i++) {
                 console.log(response);
+                var newDiv = $("<div class='float-left'>");
                 var gifDiv = $("<img class='special m-2'>");
+                var rating = $("<h1>");
                 gifDiv.attr("data-name", i);
                 gifDiv.attr("src", response.data[i].images.fixed_height_still.url);
-                mainText.append(gifDiv);
+                rating.text("Rated: " + response.data[i].rating);
+                newDiv.append(gifDiv);
+                newDiv.append(rating);
+                mainText.append(newDiv);
                 gif = $(".special");
             }
         });
     });
     
-    gif.mouseenter(function () {
+    $(".gif").mouseenter(function () {
 
         console.log("test");
         // $.ajax({
