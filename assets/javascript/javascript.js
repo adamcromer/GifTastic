@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         mainText.empty();
         var thisCartoon = $(this).attr("data-name");
-        var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
 
         $.ajax({
             url: queryURL,
@@ -38,7 +38,7 @@ $(document).ready(function () {
                 var rating = $("<h1 class='btn text-light'>");
                 gifDiv.attr("class", "gif");
                 // console.log(gifDiv.attr('class'));
-                // gifDiv.attr('data-name', i);
+                gifDiv.attr('data-name', i);
                 gifDiv.attr('src', response.data[i].images.fixed_height_still.url);
                 gifDiv.attr('data-state', 'still');
                 gifDiv.attr('data-still', response.data[i].images.fixed_height_still.url);
@@ -53,7 +53,7 @@ $(document).ready(function () {
     });
 
     //A function for what happens once you click on the gif or still.
-    image.click(function () {
+    $(document).on("click", ".gif", function () {
 
         console.log("test");
         // $.ajax({
