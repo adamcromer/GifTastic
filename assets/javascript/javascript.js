@@ -7,9 +7,7 @@ $(document).ready(function () {
 
     //Global var that link to their $counterparts.
     var btnHolder = $("#btnHolder");
-    var button = $(".btn");
     var mainText = $("#mainText");
-    var image = $(".gif");
 
 
     //A for loop which takes each item from the array and makes it into a button.
@@ -17,7 +15,7 @@ $(document).ready(function () {
         var cartoon = $('<button type="button" class="btn btn-success p-2 mr-1 ml-1 float-left">').text(cartoonList[i]);
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
-        button = $(".btn");
+        var button = $(".btn");
     }
 
 
@@ -49,10 +47,9 @@ $(document).ready(function () {
                 rating.text("Rated: " + (response.data[i].rating).toUpperCase());
                 newDiv.append(rating);
                 mainText.append(newDiv);
-                image = $(".gif");
+                var image = $(".gif");
             }
         });
-        image = $(".gif");
     });
 
     //A function for what happens once you click on the gif or still.
