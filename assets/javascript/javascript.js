@@ -9,7 +9,7 @@ $(document).ready(function () {
     var btnHolder = $("#btnHolder");
     var button = $(".btn");
     var mainText = $("#mainText");
-    var gif = $(".gif");
+    var image = $(".gif");
 
 
     //A for loop which takes each item from the array and makes it into a button.
@@ -27,9 +27,6 @@ $(document).ready(function () {
         mainText.empty();
         var thisCartoon = $(this).attr("data-name");
         var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
-        console.log(thisCartoon);
-
-        console.log(queryURL);
 
         $.ajax({
             url: queryURL,
@@ -37,29 +34,36 @@ $(document).ready(function () {
         }).then(function (response) {
 
             for (var i = 0; i < 10; i++) {
-                console.log(response);
-                var newDiv = $("<div class='float-left'>");
-                var gifDiv = $("<img class='special m-2'>");
-                var rating = $("<h1>");
-                gifDiv.attr("data-name", i);
-                gifDiv.attr("src", response.data[i].images.fixed_height_still.url);
-                rating.text("Rated: " + response.data[i].rating);
+                // console.log(response);
+                var newDiv = $("<div class='m-1 float-left'>");
+                var gifDiv = $("<img class='gif m-1'>");
+                var rating = $("<h1 class='btn text-light'>");
+                gifDiv.attr("class", "gif");
+                // console.log(gifDiv.attr('class'));
+                // gifDiv.attr('data-name', i);
+                gifDiv.attr('src', response.data[i].images.fixed_height_still.url);
+                gifDiv.attr('data-state', 'still');
+                gifDiv.attr('data-still', response.data[i].images.fixed_height_still.url);
+                gifDiv.attr('data-animate', response.data[i].images.fixed_height.url);
                 newDiv.append(gifDiv);
+                rating.text("Rated: " + (response.data[i].rating).toUpperCase());
                 newDiv.append(rating);
                 mainText.append(newDiv);
-                gif = $(".special");
+                image = $(".gif");
             }
         });
+        image = $(".gif");
     });
-    
-    $(".gif").mouseenter(function () {
+
+    //A function for what happens once you click on the gif or still.
+    image.click(function () {
 
         console.log("test");
         // $.ajax({
         //     url: queryURL,
         //     method: "GET"
         // }).then(function (response) {
-            
+
         //     var thisIndex = $(this).attr("data-name");
         //     console.log(thisIndex);
         //     gif.attr("src", response.data[thisIndex].images.fixed_height.url);
