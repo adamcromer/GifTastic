@@ -1,3 +1,13 @@
+html {
+    background: url(../images/rainbow.jpg) no-repeat center center fixed;
+    background-size: cover;  
+    
+}
+
+body {
+    background:transparent;
+}
+
 .gif {
     float:left;
 }
@@ -5,4 +15,35 @@
 #btnHolder {
     /* position:fixed; */
     height:fit-content;
+}
+
+.container {
+    background:transparent;
+}
+
+.newDiv,
+.btn,
+#inputHolder {
+    background-color:black;
+}
+
+.container,
+.body {
+    background:transparent;
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+    background: black; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888; 
 }
