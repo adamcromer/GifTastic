@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //An array with a list of cartoons to show gifs for.
-    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill", "Garfield", "Johnny Bravo", "Batman", "Spider-Man: The Animated Series", "X-Men: The Animated Series", "Scooby-Doo", "Jonny Quest", "Transformers", "Teenage Mutant Ninja Turtles"];
+    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill", "Garfield", "Johnny Bravo", "Batman", "Spider-Man: The Animated Series", "X-Men: The Animated Series", "Scooby-Doo", "Jonny Quest", "Transformers", "Teenage Mutant Ninja Turtles", "Jetsons", "Flintstones", "My Neighbor Totoro", "Spirited Away", "Howl's Moving Castle", "Cowboy Bebop", "Samurai Champloo", "Kiki's Delivery Service", "Princess Mononoke", "Dragonball"];
     cartoonList.sort();
 
 
@@ -32,13 +32,12 @@ $(document).ready(function () {
         }).then(function (response) {
 
             for (var i = 0; i < 10; i++) {
-                // console.log(response);
+
                 var newDiv = $("<div class='m-1 float-left'>");
                 var gifDiv = $("<img class='gif m-1'>");
-                var rating = $("<h1 class='btn text-light'>");
-                gifDiv.attr("class", "gif");
-                // console.log(gifDiv.attr('class'));
-                gifDiv.attr('data-name', i);
+                var rating = $("<h2 class='btn text-light float-left'>");
+
+                //Adds the attribute of the still url and adds that and the gif url as an attribute so you don't have to call ajax again on click.
                 gifDiv.attr('src', response.data[i].images.fixed_height_still.url);
                 gifDiv.attr('data-state', 'still');
                 gifDiv.attr('data-still', response.data[i].images.fixed_height_still.url);
@@ -47,7 +46,6 @@ $(document).ready(function () {
                 rating.text("Rated: " + (response.data[i].rating).toUpperCase());
                 newDiv.append(rating);
                 mainText.append(newDiv);
-                var image = $(".gif");
             }
         });
     });
@@ -55,18 +53,16 @@ $(document).ready(function () {
     //A function for what happens once you click on the gif or still.
     $(document).on("click", ".gif", function () {
 
-        console.log("test");
-        // $.ajax({
-        //     url: queryURL,
-        //     method: "GET"
-        // }).then(function (response) {
+        var state = $(this).attr("data-state");
+        console.log(state)
 
-        //     var thisIndex = $(this).attr("data-name");
-        //     console.log(thisIndex);
-        //     gif.attr("src", response.data[thisIndex].images.fixed_height.url);
-        // });
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
     });
-
-
-
 });
+
