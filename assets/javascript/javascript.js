@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     //A for loop which takes each item from the array and makes it into a button.
     for (var i = 0; i < cartoonList.length; i++) {
-        var cartoon = $('<button type="button" class="btn btn-dark p-2 mr-1 ml-1 float-left">').text(cartoonList[i]);
+        var cartoon = $('<button type="button" class="btn btn-dark p-2 mt-1 mr-1 ml-1 float-left">').text(cartoonList[i]);
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
         var button = $(".btn");
@@ -34,8 +34,8 @@ $(document).ready(function () {
             for (var i = 0; i < 10; i++) {
 
                 var newDiv = $("<div class='newDiv m-1 float-left'>");
-                var gifDiv = $("<img class='gif m-1'>");
-                var rating = $("<h1 class='btn text-light float-left'>");
+                var gifDiv = $("<img class='gif m-1 float-left clearfix'>");
+                var rating = $("<h1 class='btn text-light'>");
 
                 //Adds the attribute of the still url and adds that and the gif url as an attribute so you don't have to call ajax again on click.
                 gifDiv.attr('src', response.data[i].images.fixed_height_still.url);
@@ -54,7 +54,6 @@ $(document).ready(function () {
     $(document).on("click", ".gif", function () {
 
         var state = $(this).attr("data-state");
-        console.log(state)
 
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
