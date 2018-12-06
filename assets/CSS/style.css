@@ -32,7 +32,8 @@ body {
 
 .newDiv,
 .btn,
-#inputHolder {
+#inputHolder,
+.jumbotron {
     background-color:black;
 }
 
@@ -50,7 +51,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #555; 
+    background: white; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
