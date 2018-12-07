@@ -24,14 +24,14 @@ $(document).ready(function () {
 
         mainText.empty();
         var thisCartoon = $(this).attr("data-name");
-        var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=10";
+        var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=15";
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
 
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 15; i++) {
 
                 var newDiv = $("<div class='newDiv m-1 float-left border border-white'>");
                 var gifDiv = $("<img class='gif m-1 float-left clearfix border-0 m-0'>");
