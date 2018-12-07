@@ -13,12 +13,8 @@ body {
     width:auto;
 }
 
-.newDiv {
-    width:auto;
-}
-
 .rating {
-    float:clear;
+    width:100%;
 }
 
 #btnHolder {
@@ -40,6 +36,11 @@ body {
 .container,
 .body {
     background:transparent;
+}
+
+.btn:hover {
+    background-color:white;
+    color:black;
 }
 
 ::-webkit-scrollbar {

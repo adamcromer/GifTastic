@@ -34,8 +34,10 @@ $(document).ready(function () {
             for (var i = 0; i < 15; i++) {
 
                 var newDiv = $("<div class='newDiv m-1 float-left border border-white'>");
-                var gifDiv = $("<img class='gif m-1 float-left clearfix border-0 m-0'>");
-                var rating = $("<h1 class='btn text-light'>");
+                var gifDiv = $("<img class='gif m-1 border-0 m-0'>");
+                var rating = $("<h4 class='text-light float-left m-2'>");
+                var textDiv = $("<div>");
+                var viewOnGiphy = $("<a class='btn text-light float-right m-1'>");
 
                 //Adds the attribute of the still url and adds that and the gif url as an attribute so you don't have to call ajax again on click.
                 gifDiv.attr('src', response.data[i].images.fixed_height_still.url);
@@ -44,7 +46,12 @@ $(document).ready(function () {
                 gifDiv.attr('data-animate', response.data[i].images.fixed_height.url);
                 newDiv.append(gifDiv);
                 rating.text("Rated: " + (response.data[i].rating).toUpperCase());
-                newDiv.append(rating);
+                textDiv.append(rating);
+                viewOnGiphy.text("View on Giphy.");
+                viewOnGiphy.attr('href', response.data[i].url);
+                viewOnGiphy.attr('target', '_blank');
+                textDiv.append(viewOnGiphy);
+                newDiv.append(textDiv);
                 mainText.append(newDiv);
             }
         });
