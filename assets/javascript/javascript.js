@@ -12,10 +12,10 @@ $(document).ready(function () {
 
     //A for loop which takes each item from the array and makes it into a button.
     for (var i = 0; i < cartoonList.length; i++) {
-        var cartoon = $('<button type="button" class="border-white btn btn-dark p-2 mt-1 mr-1 ml-1 float-left">').text(cartoonList[i]);
+        var cartoon = $('<button type="button" class="border-white btnClass btn btn-dark p-2 mt-1 mr-1 ml-1 float-left">').text(cartoonList[i]);
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
-        var button = $(".btn");
+        var button = $(".btnClass");
     }
 
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
                 newDiv.append(gifDiv);
                 rating.text("Rated: " + (response.data[i].rating).toUpperCase());
                 textDiv.append(rating);
-                viewOnGiphy.text("View on Giphy.");
+                viewOnGiphy.text("View on Giphy");
                 viewOnGiphy.attr('href', response.data[i].url);
                 viewOnGiphy.attr('target', '_blank');
                 textDiv.append(viewOnGiphy);

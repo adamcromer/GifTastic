@@ -28,9 +28,26 @@ body {
 
 .newDiv,
 .btn,
+.btn-lg,
 #inputHolder,
-.jumbotron {
+.jumbotron,
+.input,
+#about {
     background-color:black;
+}
+
+#about {
+    margin-top:15vw;
+    text-align:center;
+}
+
+.input {
+    color:white;
+}
+
+.jumbotron {
+    padding:0;
+    margin-bottom:1vw;
 }
 
 .container,
@@ -38,7 +55,8 @@ body {
     background:transparent;
 }
 
-.btn:hover {
+.btn:hover,
+.btn-lg:hover {
     background-color:white;
     color:black;
 }
