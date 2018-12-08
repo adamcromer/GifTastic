@@ -8,19 +8,36 @@ $(document).ready(function () {
     //Global var that link to their $counterparts.
     var btnHolder = $("#btnHolder");
     var mainText = $("#mainText");
-
+    var input = $("#input");
+    var submit = $("#submit");
 
     //A for loop which takes each item from the array and makes it into a button.
     for (var i = 0; i < cartoonList.length; i++) {
         var cartoon = $('<button type="button" class="border-white btnClass btn btn-dark p-2 mt-1 mr-1 ml-1 float-left">').text(cartoonList[i]);
         cartoon.attr('data-name', cartoonList[i]);
         btnHolder.append(cartoon);
-        var button = $(".btnClass");
     }
 
+    //A function that takes the input and creates a button for it.
+    function submitFunction() {
+        var cartoon = $('<button type="button" class="border-white btnClass btn btn-dark p-2 mt-1 mr-1 ml-1 float-left">').text(input.val());
+        cartoon.attr('data-name', input.val());
+        btnHolder.append(cartoon);
+        input.val(" ");
+    }
 
+    submit.on("click", function (){
+        submitFunction();
+    });
+
+    // input.addEventListener("keyup", function(event) {
+    //     if (event.keycode === 13) {
+    //         submitFunction();
+    //     }
+    // });   
+    
     //A function for what happens when you click on a button.        
-    button.click(function () {
+    $(document).on("click", ".btnClass", function () {
 
         mainText.empty();
         var thisCartoon = $(this).attr("data-name");
