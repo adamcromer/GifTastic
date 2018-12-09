@@ -8,6 +8,19 @@ body {
     background:transparent;
 }
 
+.pFont {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.titleFont {
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn,
+.btn-lg {
+    font-family: 'Raleway', sans-serif;
+}
+
 .gif {
     height:100%;
     width:auto;

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //An array with a list of cartoons to show gifs for.
-    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill", "Garfield", "Johnny Bravo", "Batman", "Spider-Man: The Animated Series", "X-Men: The Animated Series", "Scooby-Doo", "Jonny Quest", "Transformers", "Teenage Mutant Ninja Turtles", "Jetsons", "Flintstones", "My Neighbor Totoro", "Spirited Away", "Howl's Moving Castle", "Cowboy Bebop", "Samurai Champloo", "Kiki's Delivery Service", "Princess Mononoke", "Dragonball"];
+    var cartoonList = ["Adventure Time", "The Simpsons", "Rick and Morty", "Regular Show", "Bob's Burgers", "Futurama", "Steven Universe", "Archer", "Avatar: The Last Airbender", "Pokemon", "Rugrats", "SpongeBob SquarePants", "Popeye", "Dexter's Laboratory", "Tom and Jerry", "Powerpuff Girls", "King of The Hill", "Garfield", "Johnny Bravo", "Batman", "Spider-Man: The Animated Series", "Scooby-Doo", "Jonny Quest", "Teenage Mutant Ninja Turtles", "Jetsons", "Flintstones", "My Neighbor Totoro", "Spirited Away", "Howl's Moving Castle", "Cowboy Bebop", "Samurai Champloo", "Kiki's Delivery Service", "Princess Mononoke", "Dragonball"];
     cartoonList.sort();
 
 
@@ -26,15 +26,10 @@ $(document).ready(function () {
         input.val(" ");
     }
 
-    submit.on("click", function (){
+    submit.on("click", function (event){
+        event.preventDefault();
         submitFunction();
     });
-
-    // input.addEventListener("keyup", function(event) {
-    //     if (event.keycode === 13) {
-    //         submitFunction();
-    //     }
-    // });   
     
     //A function for what happens when you click on a button.        
     $(document).on("click", ".btnClass", function () {
@@ -52,7 +47,7 @@ $(document).ready(function () {
 
                 var newDiv = $("<div class='newDiv m-1 float-left border border-white'>");
                 var gifDiv = $("<img class='gif m-1 border-0 m-0'>");
-                var rating = $("<h4 class='text-light float-left m-2'>");
+                var rating = $("<h4 class='text-light float-left m-2 pFont'>");
                 var textDiv = $("<div>");
                 var viewOnGiphy = $("<a class='btn text-light float-right m-1'>");
 
