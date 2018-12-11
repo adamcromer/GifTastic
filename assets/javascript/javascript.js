@@ -26,7 +26,7 @@ $(document).ready(function () {
         input.val(" ");
     }
 
-    submit.on("click", function (event){
+    submit.on("click", function(event) {
         event.preventDefault();
         submitFunction();
     });
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
         mainText.empty();
         var thisCartoon = $(this).attr("data-name");
-        var queryURL = "//api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=15";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisCartoon + "&api_key=3cIsIeloVUjq1nketG9GZn3hRsKSFI3S&limit=15";
 
         $.ajax({
             url: queryURL,
