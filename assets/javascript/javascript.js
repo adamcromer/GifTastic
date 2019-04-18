@@ -31,7 +31,7 @@ $(document).ready(function () {
         submitFunction();
     });
     
-    //A function for what happens when you click on a button.        
+    //A function for what happens when you click on a button        
     $(document).on("click", ".btnClass", function () {
 
         mainText.empty();
@@ -83,4 +83,3 @@ $(document).ready(function () {
         }
     });
 });
-
